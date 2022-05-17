@@ -12,35 +12,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:url value="" var="writeLink" />
+	<h1>글 작성하기</h1>
 	
-	<h1><a href="${writeLink }">글 작성</a></h1>
-	<br />
-	<h1>작성글 목록</h1>
+	<c:url value="/challenge/board/write" var="writeLink" />
 	
-	<table class="table">
-		<thead>
-			<tr>
-				<th>id</th>
-				<th>title</th>
-				<th>inserted</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${boardList }" var="board">
-				<tr>
-					<td>${board.id }</td>
-					<td>
-					<c:url value="" var="link" />
-					<a href="${link }">${board.title }</a>
-					<c:if test="${board.numOfReply > 0 }">
-						[${board.numOfReply }]
-					</c:if>
-					</td>
-					<td>${board.inserted }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	<form action="${writeLink }" method="post">
+		제목 : <input type="text" name="title" value="새 제목" /> <br />
+		본문 : <textarea name="body" id="" cols="30" rows="10">새 본문</textarea> <br />
+		<button>등록</button>
+	</form>
 </body>
 </html>
