@@ -14,7 +14,7 @@
 <body>
 	<c:url value="/challenge/board/write" var="writeLink" />
 	
-	<h1><a href="${writeLink }">글 작성</a></h1>
+	<h1><a href="${writeLink }">게시글 작성</a></h1>
 	<br />
 	<h1>작성글 목록</h1>
 	

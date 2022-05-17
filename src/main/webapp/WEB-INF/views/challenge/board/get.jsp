@@ -14,6 +14,10 @@
 <body>
 	<h1>${board.id }번 게시물</h1>
 	
+	<br />
+	<hr />
+	<br />
+	
 	<form action="${appRoot }/challenge/board/modify" method="post">
 	<input type="hidden" name="id" value="${board.id }" />
 	
@@ -23,20 +27,20 @@
 	
 	작성일시 : <input type="datetime-local" value="${board.inserted }" readonly /> <br />
 	
-	<button>수정</button>	
+	<button><i class="fa-solid fa-pen-to-square"></i></button>	
 	</form>
 	
 	<c:url value="/challenge/board/remove" var="removeLink" />
 	<form action="${removeLink }" method="post">
 		<input type="hidden" name="id" value="${board.id }" />
-		<button>삭제</button>	
+		<button><i class="fa-regular fa-trash-can"></i></button>	
 	</form>
 	
 	<br />
 	<hr />
 	<br />
 	
-	<h2>댓글</h2>
+	<h3>댓글</h3>
 	
 	<c:url value="/challenge/reply/add" var="replyAddLink" />
 	
@@ -44,7 +48,7 @@
 		<input type="hidden" name="boardId" value="${board.id }" />
 		댓글 : <input type="text" name="content" size="50" />
 		
-		<button>쓰기</button>
+		<button><i class="fa-solid fa-pen-fancy"></i></button>
 	</form>
 	
 	<br />
@@ -60,14 +64,14 @@
 					<input type="hidden" name="id" value="${reply.id }" />
 					<input type="hidden" name="boardId" value="${board.id }" />
 					<input type="text" name="content" value="${reply.content }" />
-					<button>수정</button>
+					<button><i class="fa-solid fa-pen-clip"></i></button>
 				</form>
 				
 				<c:url value="/challenge/reply/remove" var="replyRemoveLink" />
 				<form action="${replyRemoveLink }" method="post">
 					<input type="hidden" name="id" value="${reply.id }" />
 					<input type="hidden" name="boardId" value="${board.id }" />
-					<button>삭제</button>
+					<button><i class="fa-solid fa-eraser"></i></button>
 				</form>
 			</div>
 		</c:forEach>	
