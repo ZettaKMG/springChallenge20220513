@@ -17,10 +17,6 @@
 	FROM Board WHERE id = #{id}
 </select>
 
-<insert id="insertBoard" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-	INSERT INTO Board (title, body, inserted)
-	VALUES (#{title}, #{body}, #{inserted})
-</insert>
 
 <update id="updateBoard">
 	UPDATE Board SET title = #{title}, body = #{body}
@@ -31,26 +27,32 @@
 	DELETE FROM Board WHERE id = #{id}
 </delete>
 
+<insert id="insertBoard" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+	INSERT INTO Board (title, body, inserted)
+	VALUES (#{title}, #{body}, #{inserted})
+</insert>
 
 <!-- Reply 관련 코드 -->
-<select id="selectReplyByBoardId" resultType="com.choongang.spr.domain.ReplyDto">
-	SELECT id, board_id boardId, content, inserted FROM Reply
-	WHERE board_id = #{boardId} ORDER BY id DESC
-</select>
-
 <insert id="insertReply">
 	INSERT INTO Reply (board_id, content, inserted)
 	VALUES (#{boardId}, #{content}, #{inserted} )
 </insert>
 
-<update id="updateReply">
-	UPDATE Reply SET content = #{content} WHERE id = #{id}
-</update>
+<select id="selectReplyByBoardId" resultType="com.choongang.spr.domain.ReplyDto">
+	SELECT id, board_id boardId, content, inserted FROM Reply
+	WHERE board_id = #{boardId} ORDER BY id DESC
+</select>
 
 <delete id="deleteReplyById">
 	DELETE FROM Reply WHERE id = #{id}
 </delete>
 
+<update id="updateReply">
+	UPDATE Reply SET content = #{content} WHERE id = #{id}
+</update>
+
 <delete id="deleteReplyByBoard">
 	DELETE FROM Reply WHERE board_id = #{boardId}
 </delete>
+
+</mapper>
