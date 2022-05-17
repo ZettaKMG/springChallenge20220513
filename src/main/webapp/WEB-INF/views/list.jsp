@@ -12,6 +12,35 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<c:url value="" var="writeLink" />
+	
+	<h1><a href="${writeLink }">글 작성</a></h1>
+	<br />
+	<h1>작성글 목록</h1>
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>title</th>
+				<th>inserted</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${boardList }" var="board">
+				<tr>
+					<td>${board.id }</td>
+					<td>
+					<c:url value="" var="link" />
+					<a href="${link }">${board.title }</a>
+					<c:if test="${board.numOfReply > 0 }">
+						[${board.numOfReply }]
+					</c:if>
+					</td>
+					<td>${board.inserted }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>
