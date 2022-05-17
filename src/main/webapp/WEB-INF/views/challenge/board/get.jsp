@@ -19,7 +19,7 @@
 	
 	제목 : <input type="text" name="title" value="${board.title }" /> <br />
 	
-	본문 : <textarea name="body" id="" cols="30" rows="10">${board.body }</textarea> <br />
+	본문 : <textarea name="body" cols="30" rows="10">${board.body }</textarea> <br />
 	
 	작성일시 : <input type="datetime-local" value="${board.inserted }" readonly /> <br />
 	
