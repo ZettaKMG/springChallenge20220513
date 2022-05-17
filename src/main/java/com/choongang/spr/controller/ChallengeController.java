@@ -117,6 +117,7 @@ public class ChallengeController {
 		return "redirect:/challenge/board/" + reply.getBoardId();
 	}
 	
+	@PostMapping("/reply/modify")
 	public String modifyReply(ReplyDto reply, RedirectAttributes rttr) {
 		boolean success = boardService.modifyReply(reply);
 		
