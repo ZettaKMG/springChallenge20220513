@@ -12,14 +12,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<br />
 	<h1>글 작성하기</h1>
+	<br />
 	
 	<c:url value="/challenge/board/write" var="writeLink" />
 	
 	<form action="${writeLink }" method="post">
-		제목 : <input type="text" name="title" value="새 제목" /> <br />
-		본문 : <textarea name="body" id="" cols="30" rows="10">새 본문</textarea> <br />
-		<button>등록</button>
+		제목 : <input type="text" name="title" value="새 제목" /> <br /> <br />
+		본문 : <textarea name="body" id="" cols="50" rows="5">새 본문</textarea> <br /> <br />
+		<button type="button" class="btn btn-primary">등록</button> <br />
 	</form>
+	
+	<br />
+	
+	<c:url value="/challenge/board/list" var="listLink" />
+	<h5><a href="${listLink }">목록으로 되돌아가기</a></h5>	
 </body>
 </html>

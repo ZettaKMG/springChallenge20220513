@@ -14,9 +14,7 @@
 <body>
 	<h1>${board.id }번 게시물</h1>
 	
-	<br />
-	<hr />
-	<br />
+	<hr />	
 	
 	<form action="${appRoot }/challenge/board/modify" method="post">
 	<input type="hidden" name="id" value="${board.id }" />
@@ -25,21 +23,19 @@
 	
 	본문 : <textarea name="body" cols="50" rows="5">${board.body }</textarea> <br />
 	
-	작성일시 : <input type="datetime-local" value="${board.inserted }" readonly /> <br />
+	작성일시 : <input type="datetime-local" value="${board.inserted }" readonly /> <br /> <br />
 	
-	<button><i class="fa-solid fa-pen-to-square"></i></button>	
+	<button type="button" class="btn btn-warning">수정</button>	
 	</form>
 	
 	<c:url value="/challenge/board/remove" var="removeLink" />
 	<form action="${removeLink }" method="post">
 		<input type="hidden" name="id" value="${board.id }" />
-		<button><i class="fa-regular fa-trash-can"></i></button>	
+		<button type="button" class="btn btn-danger">삭제</button>	
 	</form>
 	
-	<br />
 	<hr />
-	<br />
-	
+		
 	<h3>댓글</h3>
 	
 	<c:url value="/challenge/reply/add" var="replyAddLink" />
@@ -48,33 +44,33 @@
 		<input type="hidden" name="boardId" value="${board.id }" />
 		댓글 : <input type="text" name="content" size="50" />
 		
-		<button><i class="fa-solid fa-pen-fancy"></i></button>
+		<button type="button" class="btn btn-primary">추가</button>
 	</form>
 	
-	<br />
 	<hr />
-	<br />
 	
 	<div>
 		<c:forEach items="${replyList }" var="reply">
-			<div style="border: 1px solid black; margin-bottom: 3px;">
-				${reply.inserted }	:						
+			<div style="border: 1px solid black; margin-bottom: 3px;">						
 				<c:url value="/challenge/reply/modify" var="replyModifyLink" />
 				<form action="${replyModifyLink }" method="post">
 					<input type="hidden" name="id" value="${reply.id }" />
 					<input type="hidden" name="boardId" value="${board.id }" />
-					<input type="text" name="content" value="${reply.content }" />
-					<button><i class="fa-solid fa-pen-clip"></i></button>
+					<input type="text" name="content" value="${reply.content }" /> ${reply.inserted }				
+					<button type="button" class="btn btn-warning">수정</button>
 				</form>				
 				
 				<c:url value="/challenge/reply/remove" var="replyRemoveLink" />
 				<form action="${replyRemoveLink }" method="post">
 					<input type="hidden" name="id" value="${reply.id }" />
 					<input type="hidden" name="boardId" value="${board.id }" />
-					<button><i class="fa-solid fa-eraser"></i></button>
+					<button type="button" class="btn btn-danger">삭제</button>
 				</form>
 			</div>
-		</c:forEach>	
-	</div>
+		</c:forEach>			
+	</div>	
+		
+	<c:url value="/challenge/board/list" var="listLink" />
+	<h5><a href="${listLink }">목록으로 되돌아가기</a></h5>
 </body>
 </html>

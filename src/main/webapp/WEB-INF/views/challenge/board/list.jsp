@@ -12,13 +12,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:url value="/challenge/board/write" var="writeLink" />
+	<c:url value="/challenge/board/write" var="writeLink" /><br />
+	<h1><a href="${writeLink }">게시글 작성</a></h1><br /><br />
+	<h1>작성글 목록</h1><br />
 	
-	<h1><a href="${writeLink }">게시글 작성</a></h1>
-	<br />
-	<h1>작성글 목록</h1>
-	
-	<table class="table">
+	<table class="table table-secondary table-striped">
 		<thead>
 			<tr>
 				<th>id</th>
