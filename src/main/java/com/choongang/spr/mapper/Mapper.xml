@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.choongang.spr.mapper.Mapper">
+
+<!-- Board 관련 코드 -->
+<select id="selectBoard" resultType="com.choongang.spr.domain.BoardDto">
+	SELECT b.id id, b.title title, b.inserted inserted,
+	COUNT(r.id) numOfReply
+	FROM Board b LEFT JOIN Reply r ON b.id = r.board_id
+	GROUP BY b.id ORDER BY id DESC
+</select>
+
+<select id="getBoard" resultType="com.choongang.spr.domain.BoardDto">
+	SELECT id, title, body, inserted
+	FROM Board WHERE id = #{id}
+</select>
+
+<insert id="insertBoard" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+	INSERT INTO Board (title, body, inserted)
+	VALUES (#{title}, #{body}, #{inserted})
+</insert>
+
+<update id="updateBoard">
+	UPDATE Board SET title = #{title}, body = #{body}
+	WHERE id = #{id}
+</update>
+
+<delete id="deleteBoard">
+	DELETE FROM Board WHERE id = #{id}
+</delete>
+
+
+<!-- Reply 관련 코드 -->
+<select id="selectReplyByBoardId" resultType="com.choongang.spr.domain.ReplyDto">
+	SELECT id, board_id boardId, content, inserted FROM Reply
+	WHERE board_id = #{boardId} ORDER BY id DESC
+</select>
+
+<insert id="insertReply">
+	INSERT INTO Reply (board_id, content, inserted)
+	VALUES (#{boardId}, #{content}, #{inserted} )
+</insert>
+
+<update id="updateReply">
+	UPDATE Reply SET content = #{content} WHERE id = #{id}
+</update>
+
+<delete id="deleteReplyById">
+	DELETE FROM Reply WHERE id = #{id}
+</delete>
+
+<delete id="deleteReplyByBoard">
+	DELETE FROM Reply WHERE board_id = #{boardId}
+</delete>
