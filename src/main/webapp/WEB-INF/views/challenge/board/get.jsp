@@ -23,7 +23,7 @@
 	
 	제목 : <input type="text" name="title" value="${board.title }" /> <br />
 	
-	본문 : <textarea name="body" cols="30" rows="10">${board.body }</textarea> <br />
+	본문 : <textarea name="body" cols="50" rows="5">${board.body }</textarea> <br />
 	
 	작성일시 : <input type="datetime-local" value="${board.inserted }" readonly /> <br />
 	
@@ -65,7 +65,7 @@
 					<input type="hidden" name="boardId" value="${board.id }" />
 					<input type="text" name="content" value="${reply.content }" />
 					<button><i class="fa-solid fa-pen-clip"></i></button>
-				</form>
+				</form>				
 				
 				<c:url value="/challenge/reply/remove" var="replyRemoveLink" />
 				<form action="${replyRemoveLink }" method="post">
