@@ -22,7 +22,6 @@ import com.choongang.spr.service.ChallengeReplyService;
 @Controller
 @RequestMapping("challenge")
 public class ChallengeController {
-	// Board, Reply Service 연동
 	@Autowired
 	private ChallengeBoardService boardService;
 	
@@ -33,14 +32,7 @@ public class ChallengeController {
 	private ChallengePageInfoService pageInfoService;
 	
 	
-	// Board 관련 코드	
-	@GetMapping("/board/list")
-	public void listBoard(Model model) {
-		List<BoardDto> list = boardService.listBoard();
-		
-		model.addAttribute("boardList", list);
-	}
-	
+	// Board 관련 코드		
 	@GetMapping("/board/{id}")
 	public String getBoard(@PathVariable("id") int id, Model model) {
 		BoardDto dto = boardService.getBoard(id);
@@ -93,26 +85,26 @@ public class ChallengeController {
 			rttr.addFlashAttribute("message", "게시글 등록 실패");
 		}
 		
-		return "redirect:/challenge/board/" + board.getId();
+		return "redirect:/challenge/board/list"; // + board.getId();
 	}
 	
-	@PostMapping("/board/list")
+	@GetMapping("/board/list")
 	public String pageInfoProcess(@RequestParam(name = "page", defaultValue = "1") int page, Model model) {
 		int rowPerPage = 5;
 		
 		List<BoardDto> list = pageInfoService.listBoardPage(page, rowPerPage);
 		int totalRecords = pageInfoService.countBoard();
 		
-		int end = (totalRecords - 1) / (rowPerPage + 1);
+		int end = (totalRecords - 1) / (rowPerPage) + 1;
 		
 		PageInfoDto pageInfo = new PageInfoDto();
 		pageInfo.setCurrent(page);
 		pageInfo.setEnd(end);
 		
-		model.addAttribute("board", list);
+		model.addAttribute("boardList", list);
 		model.addAttribute("pageInfo", pageInfo);
 		
-		return "/board/list";
+		return "/challenge/board/list";
 	}
 	
 	
