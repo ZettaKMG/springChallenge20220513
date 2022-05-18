@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.choongang.spr.mapper.BoardMapper">
 
-<!-- Board 관련 코드 -->
 <select id="selectBoard" resultType="com.choongang.spr.domain.BoardDto">
 	SELECT b.id id, b.title title, b.inserted inserted,
 	COUNT(r.id) numOfReply

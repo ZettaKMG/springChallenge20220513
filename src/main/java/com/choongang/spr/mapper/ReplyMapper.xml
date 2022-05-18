@@ -4,7 +4,6 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.choongang.spr.mapper.ReplyMapper">
 
-<!-- Reply 관련 코드 -->
 <insert id="insertReply">
 	INSERT INTO Reply (board_id, content, inserted)
 	VALUES (#{boardId}, #{content}, #{inserted} )
