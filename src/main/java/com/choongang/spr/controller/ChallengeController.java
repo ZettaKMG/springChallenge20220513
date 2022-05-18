@@ -54,7 +54,7 @@ public class ChallengeController {
 			rttr.addFlashAttribute("message", "게시글 수정 실패");
 		}
 		
-		return "redirect:/challenge/board/" + board.getId();
+		return "redirect:/challenge/board/list"; // + board.getId();
 	}
 	
 	@PostMapping("/board/remove")
