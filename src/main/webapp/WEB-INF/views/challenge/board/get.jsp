@@ -42,13 +42,13 @@
 	
 	작성일시 : <input type="datetime-local" value="${board.inserted }" readonly /> <br /> <br />
 	
-	<button type="button" class="btn btn-outline-warning">수정</button>	
+	<button type="submit" class="btn btn-outline-warning">수정</button>	
 	</form>
 	
 	<c:url value="/challenge/board/remove" var="removeLink" />
 	<form action="${removeLink }" method="post">
 		<input type="hidden" name="id" value="${board.id }" />
-		<button type="button" class="btn btn-outline-danger">삭제</button>	
+		<button type="submit" class="btn btn-outline-danger">삭제</button>	
 	</form>
 	
 	<hr />
@@ -61,7 +61,7 @@
 		<input type="hidden" name="boardId" value="${board.id }" />
 		<input type="text" name="content" size="50" />
 		
-		<button type="button" class="btn btn-outline-primary">추가</button>
+		<button type="submit" class="btn btn-outline-primary">추가</button>
 	</form>
 	
 	<hr />
@@ -74,14 +74,14 @@
 					<input type="hidden" name="id" value="${reply.id }" />
 					<input type="hidden" name="boardId" value="${board.id }" />
 					<input type="text" name="content" value="${reply.content }" /> ${reply.inserted }				
-					<button type="button" class="btn btn-outline-warning">수정</button>
+					<button type="submit" class="btn btn-outline-warning">수정</button>
 				</form>				
 				
 				<c:url value="/challenge/reply/remove" var="replyRemoveLink" />
 				<form action="${replyRemoveLink }" method="post">
 					<input type="hidden" name="id" value="${reply.id }" />
 					<input type="hidden" name="boardId" value="${board.id }" />
-					<button type="button" class="btn btn-outline-danger">삭제</button>
+					<button type="submit" class="btn btn-outline-danger">삭제</button>
 				</form>
 			</div>
 		</c:forEach>			

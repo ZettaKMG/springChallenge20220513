@@ -34,7 +34,7 @@
 	<form action="${writeLink }" method="post">
 		제목 : <input type="text" name="title" value="새 제목" /> <br /> <br />
 		본문 : <textarea name="body" id="" cols="50" rows="5">새 본문</textarea> <br /> <br />
-		<button type="button" class="btn btn-outline-primary">등록</button> <br />
+		<button type="submit" class="btn btn-outline-primary">등록</button> <br />
 	</form>
 	
 </body>
