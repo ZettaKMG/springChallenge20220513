@@ -48,6 +48,6 @@ public class ChallengeBoardService {
 		int count = boardMapper.insertBoard(board);
 		
 		return count == 1;
-	}	
+	}
 
 }
