@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.choongang.spr.mapper.Mapper">
+<mapper namespace="com.choongang.spr.mapper.BoardMapper">
 
 <!-- Board 관련 코드 -->
 <select id="selectBoard" resultType="com.choongang.spr.domain.BoardDto">
@@ -17,7 +17,6 @@
 	FROM Board WHERE id = #{id}
 </select>
 
-
 <update id="updateBoard">
 	UPDATE Board SET title = #{title}, body = #{body}
 	WHERE id = #{id}
@@ -31,28 +30,5 @@
 	INSERT INTO Board (title, body, inserted)
 	VALUES (#{title}, #{body}, #{inserted})
 </insert>
-
-<!-- Reply 관련 코드 -->
-<insert id="insertReply">
-	INSERT INTO Reply (board_id, content, inserted)
-	VALUES (#{boardId}, #{content}, #{inserted} )
-</insert>
-
-<select id="selectReplyByBoardId" resultType="com.choongang.spr.domain.ReplyDto">
-	SELECT id, board_id boardId, content, inserted FROM Reply
-	WHERE board_id = #{boardId} ORDER BY id DESC
-</select>
-
-<delete id="deleteReplyById">
-	DELETE FROM Reply WHERE id = #{id}
-</delete>
-
-<update id="updateReply">
-	UPDATE Reply SET content = #{content} WHERE id = #{id}
-</update>
-
-<delete id="deleteReplyByBoard">
-	DELETE FROM Reply WHERE board_id = #{boardId}
-</delete>
 
 </mapper>
