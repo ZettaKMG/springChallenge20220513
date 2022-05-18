@@ -4,12 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.choongang.spr.mapper.PageInfoMapper">
 
-<select id="listBoardPage">
-	SELECT id, title, body, inserted FROM Board 
+<select id="listBoardPage" resultType="com.choongang.spr.domain.BoardDto">
+	SELECT b.id id, b.title title, b.inserted inserted,
+	COUNT(r.id) numOfReply
+	FROM Board b LEFT JOIN Reply r ON b.id = r.board_id
+	GROUP BY b.id ORDER BY id
 	LIMIT #{from}, #{rowPerPage}
 </select>
 
-<select id="countBoard">
+<select id="countBoard" resultType="int">
 	SELECT Count(id) FROM Board
 </select>
 
