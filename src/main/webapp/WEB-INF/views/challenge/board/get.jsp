@@ -12,8 +12,25 @@
 <title>Challenge Get Page</title>
 </head>
 <body>
-	<h1>${board.id }번 게시물</h1>
+	<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+					<c:url value="/challenge/board/list" var="listLink"></c:url>
+					<a class="nav-link" href="${listLink }">게시글 목록</a>
+					</li>
+					<li class="nav-item">
+					<c:url value="/challenge/board/write" var="writeLink" />
+					<a class="nav-link" href="${writeLink }">게시글 쓰기</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 	
+	<hr />
+	<h1>${board.id }번 게시물</h1>	
 	<hr />	
 	
 	<form action="${appRoot }/challenge/board/modify" method="post">
@@ -69,8 +86,6 @@
 			</div>
 		</c:forEach>			
 	</div>	
-		
-	<c:url value="/challenge/board/list" var="listLink" />
-	<h5><a href="${listLink }">목록으로 되돌아가기</a></h5>
+	
 </body>
 </html>

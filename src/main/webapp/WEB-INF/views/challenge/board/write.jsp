@@ -12,9 +12,22 @@
 <title>Challenge Write Page</title>
 </head>
 <body>
-	<br />
-	<h1>글 작성하기</h1>
-	<br />
+	<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+					<c:url value="/challenge/board/list" var="listLink"></c:url>
+					<a class="nav-link" href="${listLink }">게시글 목록</a>
+					</li>					
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<hr />
+	<h1>게시글 작성하기</h1>
+	<hr />
 	
 	<c:url value="/challenge/board/write" var="writeLink" />
 	
@@ -24,9 +37,5 @@
 		<button type="button" class="btn btn-outline-primary">등록</button> <br />
 	</form>
 	
-	<br />
-	
-	<c:url value="/challenge/board/list" var="listLink" />
-	<h5><a href="${listLink }">목록으로 되돌아가기</a></h5>	
 </body>
 </html>

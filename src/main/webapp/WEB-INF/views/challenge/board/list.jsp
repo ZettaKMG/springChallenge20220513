@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,9 +13,26 @@
 <title>Challenge List Page</title>
 </head>
 <body>
-	<c:url value="/challenge/board/write" var="writeLink" /><br />
-	<h1><a href="${writeLink }">게시글 작성</a></h1><br /><br />
-	<h1>작성글 목록</h1><br />
+	<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+					<c:url value="/challenge/board/list" var="listLink"></c:url>
+					<a class="nav-link" href="${listLink }">게시글 목록</a>
+					</li>
+					<li class="nav-item">
+					<c:url value="/challenge/board/write" var="writeLink" />
+					<a class="nav-link" href="${writeLink }">게시글 쓰기</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<hr />	
+	<h1>게시글 목록</h1>	
+	<hr />
 	
 	<table class="table table-secondary table-striped">
 		<thead>
@@ -40,5 +58,9 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	<div class="mt-3">
+		<custom:PageNation path="list" />
+	</div>
 </body>
 </html>
