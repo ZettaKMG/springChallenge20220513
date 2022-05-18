@@ -8,20 +8,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.choongang.spr.domain.BoardDto;
-import com.choongang.spr.domain.ReplyDto;
-import com.choongang.spr.mapper.Mapper;
+import com.choongang.spr.mapper.BoardMapper;
+import com.choongang.spr.mapper.ReplyMapper;
 
 @Service
-public class ChallengeService {
-	// Board, Reply Mapper 불러오기
+public class ChallengeBoardService {
 	@Autowired
-	private Mapper boardMapper;
+	private BoardMapper boardMapper;
 	
 	@Autowired
-	private Mapper replyMapper;
+	private ReplyMapper replyMapper;
 	
-	
-	// Board 관련 코드	
 	public List<BoardDto> listBoard(){
 		return boardMapper.selectBoard();
 	}
@@ -51,34 +48,6 @@ public class ChallengeService {
 		int count = boardMapper.insertBoard(board);
 		
 		return count == 1;
-	}
-	
-	
-	// Reply 관련 코드
-	public List<ReplyDto> listReplyByBoardId(int id) {
-		return replyMapper.selectReplyByBoardId(id);
-	}
-	
-	public boolean addReply(ReplyDto reply) {
-		reply.setInserted(LocalDateTime.now());
-		
-		int count = replyMapper.insertReply(reply);
-		
-		return count == 1;
-	}
-
-	public boolean modifyReply(ReplyDto reply) {
-		int count = replyMapper.updateReply(reply);
-		
-		return count == 1;
-	}
-
-	public boolean removeReplyById(int id) {
-		replyMapper.deleteReplyById(id);
-		
-		int count = replyMapper.deleteReplyById(id);
-		
-		return count == 1;
-	}
+	}	
 
 }
