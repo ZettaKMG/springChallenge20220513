@@ -13,17 +13,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.choongang.spr.domain.BoardDto;
 import com.choongang.spr.domain.ReplyDto;
-import com.choongang.spr.service.ChallengeService;
+import com.choongang.spr.service.ChallengeBoardService;
 
 @Controller
 @RequestMapping("challenge")
 public class ChallengeController {
 	// Board, Reply Service 연동
 	@Autowired
-	private ChallengeService boardService;
+	private ChallengeBoardService boardService;
 	
 	@Autowired
-	private ChallengeService replyService;
+	private ChallengeBoardService replyService;
 	
 	
 	// Board 관련 코드	
