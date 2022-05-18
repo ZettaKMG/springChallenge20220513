@@ -1,5 +1,8 @@
 package com.choongang.spr.domain;
 
+import lombok.ToString;
+
+@ToString
 public class PageInfoDto {
 	private int current;
 	private int end;
@@ -13,11 +16,11 @@ public class PageInfoDto {
 	}
 	
 	public int getLeft() {
-		return Math.max(current, 1);
+		return Math.min(current, 1);
 	}
 	
 	public int getRight() {
-		return Math.min(current, end);
+		return Math.max(current, end);
 	}
 	
 	public void setEnd(int end) {
