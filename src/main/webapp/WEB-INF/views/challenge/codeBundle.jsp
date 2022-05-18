@@ -12,6 +12,38 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- PageNation tag -->
+<!-- pagination 이전 버튼 부분 -->
+<!-- 
+	<c:choose>
+		<c:when test="${pageInfo.left }">
+			<li class="page-item disabled">
+				<a href="/challenge/board?page=${pageInfo.left - 1 }">이전</a>
+			</li>
+		</c:when>
+		<c:otherwise>
+			<li class="page-item">
+				<a href="/challenge/board?page=${pageInfo.left - 1 }">이전</a>
+			</li>			
+		</c:otherwise>
+	</c:choose>
+-->
+
+<!-- pagination 다음 버튼 부분 -->
+<!-- 
+	<c:choose>
+		<c:when test="${pageInfo.right }">
+			<li class="page-item disabled">
+				<a href="/challenge/board?page=${pageInfo.right + 1 }">다음</a>
+			</li>
+		</c:when>
+		<c:otherwise>
+			<li class="page-item">
+				<a href="/challenge/board?page=${pageInfo.right + 1 }">다음</a>
+			</li>			
+		</c:otherwise>
+	</c:choose>
+-->
 
 </body>
 </html>
