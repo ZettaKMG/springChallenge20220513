@@ -60,7 +60,7 @@
 	</table>
 	
 	<div class="mt-3">
-		<custom:PageNation path="list" />
+		<custom:Pagination path="list" />
 	</div>
 </body>
 </html>
