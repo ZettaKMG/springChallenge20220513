@@ -35,7 +35,7 @@
 	
 	<form action="${appRoot }/challenge/board/modify" method="post">
 	<input type="hidden" name="id" value="${board.id }" />
-	
+		
 	제목 : <input type="text" name="title" value="${board.title }" /> <br />
 	
 	본문 : <textarea name="body" cols="50" rows="5">${board.body }</textarea> <br />
