@@ -1,3 +1,5 @@
+* error 발생하여 넣고 싶었으나 넣지 못한 코드들
+
 <PageNation tag>
 1-1) pagination 이전 버튼 부분
 	<c:choose>
