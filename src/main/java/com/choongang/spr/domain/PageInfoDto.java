@@ -16,11 +16,11 @@ public class PageInfoDto {
 	}
 	
 	public int getLeft() {
-		return Math.min(current, 1);
+		return (current - 1) / 10 * 10 + 1;
 	}
 	
 	public int getRight() {
-		return Math.max(current, end);
+		return Math.min(getLeft() + 9, end);
 	}
 	
 	public void setEnd(int end) {
