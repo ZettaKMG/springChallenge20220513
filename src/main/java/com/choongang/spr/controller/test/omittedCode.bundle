@@ -1,6 +1,6 @@
 * error 발생하여 넣고 싶었으나 넣지 못한 코드들
 
-<PageNation tag>
+<PageNation tag> --> 1~10 / 11~20 / 21~30 / ... 나오게 하는게 목표
 1-1) pagination 이전 버튼 부분
 	<c:choose>
 		<c:when test="${pageInfo.left }">
