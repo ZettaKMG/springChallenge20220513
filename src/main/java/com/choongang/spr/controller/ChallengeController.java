@@ -101,6 +101,10 @@ public class ChallengeController {
 		pageInfo.setCurrent(page);
 		pageInfo.setEnd(end);
 		
+//		System.out.println(pageInfo);
+//		System.out.println(pageInfo.getLeft());
+//		System.out.println(pageInfo.getRight());
+		
 		model.addAttribute("boardList", list);
 		model.addAttribute("pageInfo", pageInfo);
 		
