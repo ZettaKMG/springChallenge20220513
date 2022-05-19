@@ -43,6 +43,7 @@
 	작성일시 : <input type="datetime-local" value="${board.inserted }" readonly /> <br /> <br />
 	
 	<button type="submit" class="btn btn-outline-warning">수정</button>	
+		
 	</form>
 	
 	<c:url value="/challenge/board/remove" var="removeLink" />
