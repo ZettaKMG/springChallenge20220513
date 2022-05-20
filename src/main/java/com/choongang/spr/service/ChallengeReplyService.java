@@ -15,7 +15,7 @@ public class ChallengeReplyService {
 	private ReplyMapper replyMapper;
 	
 	public boolean addReply(ReplyDto reply) {
-		reply.setInserted(LocalDateTime.now());
+//		reply.setInserted(LocalDateTime.now());
 		
 		int count = replyMapper.insertReply(reply);
 		

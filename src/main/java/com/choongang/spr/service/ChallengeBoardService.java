@@ -43,7 +43,7 @@ public class ChallengeBoardService {
 	}
 	
 	public boolean addBoard(BoardDto board) {
-		board.setInserted(LocalDateTime.now());
+//		board.setInserted(LocalDateTime.now());
 		
 		int count = boardMapper.insertBoard(board);
 		
