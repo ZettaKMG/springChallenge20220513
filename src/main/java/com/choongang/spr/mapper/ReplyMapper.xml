@@ -5,8 +5,8 @@
 <mapper namespace="com.choongang.spr.mapper.ReplyMapper">
 
 <insert id="insertReply">
-	INSERT INTO Reply (board_id, content, inserted)
-	VALUES (#{boardId}, #{content}, #{inserted} )
+	INSERT INTO Reply (board_id, content)
+	VALUES (#{boardId}, #{content})
 </insert>
 
 <select id="selectReplyByBoardId" resultType="com.choongang.spr.domain.ReplyDto">
