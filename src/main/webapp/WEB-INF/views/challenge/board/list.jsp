@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="custom" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,6 +13,10 @@
 <title>Challenge List Page</title>
 </head>
 <body>
+	<div class="mt-3">
+		<my:customPage></my:customPage>
+	</div>
+
 	<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="navbarNav">
@@ -57,10 +61,7 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table>
+	</table>	
 	
-	<div class="mt-3">
-		<custom:Pagination path="list" />
-	</div>
 </body>
 </html>
