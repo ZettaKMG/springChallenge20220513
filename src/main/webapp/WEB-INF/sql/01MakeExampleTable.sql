@@ -65,13 +65,11 @@ MODIFY COLUMN memberId VARCHAR(20) NOT NULL;
 SELECT * FROM Board ORDER BY 1 DESC;
 
 -- 여기까지 일단 진행
+-- 이 아래부터 에러코드 1823 발생하여 진행 못함
 
 -- Reply에 memberId 컬럼 추가(Member 테이블 id 컬럼 참조키 제약사항, not null 제약사항 추가)
 ALTER TABLE Reply
 ADD COLUMN memberId VARCHAR(20) NOT NULL DEFAULT 'user' REFERENCES Member(id) AFTER content;
-
--- 에러코드 1823 발생
-
 
 DESC Reply;
 
