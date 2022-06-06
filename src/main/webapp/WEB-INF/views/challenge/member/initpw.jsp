@@ -17,40 +17,20 @@
 	<my:navBar path="memberList"></my:navBar>
 	
 	<div class="container">
-		<div class="row">
-			<div class="col">			
-	
-				<h1>회원 목록</h1>
-				
-				<table class="table">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>PW</th>
-							<th>EMAIL</th>
-							<th>NICKNAME</th>
-							<th>가입일시</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${memberList }" var="member">
-							<tr>
-								<td>
-									<c:url value="challenge/member/get" var="getMemberLink">
-										<c:param name="id" value="${member.id }"></c:param>
-									</c:url>
-									<a href="${getMemberLink }">
-										${member.id }
-									</a>
-								</td>
-								<td>${member.password }</td>
-								<td>${member.email }</td>
-								<td>${member.nickName }</td>
-								<td>${member.inserted }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+		<div class="row justify-content-center">
+			<div class="col-12 col-lg-6">
+				<h1>암호 초기화</h1>
+				<form method="post">
+					<label for="idInput1" class="form-label">
+						초기화할 아이디 
+					</label>
+					
+					<input id="idInput1" class="form-control" type="text" name="id" />
+					
+					<div class="form-text mb-3">암호는 아이디로 초기화 됩니다.</div>
+					
+					<input class="btn btn-primary" type="submit" value="초기화" />
+				</form>
 			</div>
 		</div>
 	</div>

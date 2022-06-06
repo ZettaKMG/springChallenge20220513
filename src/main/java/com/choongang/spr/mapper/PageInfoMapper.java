@@ -8,5 +8,6 @@ import com.choongang.spr.domain.BoardDto;
 
 public interface PageInfoMapper {
 	List<BoardDto> listBoardPage(@Param("from") int from, @Param("rowPerPage") int rowPerPage);
+	
 	int countBoard();
 }

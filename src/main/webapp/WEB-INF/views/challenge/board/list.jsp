@@ -13,55 +13,113 @@
 <title>Challenge List Page</title>
 </head>
 <body>
-	<div class="mt-3">
-		<my:customPage></my:customPage>
-	</div>
-
-	<nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
-		<div class="container-fluid">
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-					<c:url value="/challenge/board/list" var="listLink"></c:url>
-					<a class="nav-link" href="${listLink }">게시글 목록</a>
-					</li>
-					<li class="nav-item">
-					<c:url value="/challenge/board/write" var="writeLink" />
-					<a class="nav-link" href="${writeLink }">게시글 쓰기</a>
-					</li>
-				</ul>
+	<my:navBar path="list"></my:navBar>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h1>게시글 목록</h1>
+				<c:if test="${not empty message }">
+					<div class="alert alert-primary">
+						${message }
+					</div>
+				</c:if>
+				
+				<!-- table.table>thead>tr>th*3^^tbody -->
+				<table class="table">
+					<thead>
+						<tr>
+							<th><i class="fa-solid fa-hashtag"> Post Order Number</i></th>
+							<th>Post Title</th>
+							<th><i class="fa-solid fa-pen-fancy"> Writer</i></th>
+							<th><i class="fa-regular fa-calendar"> Date of Writing</i></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${boardList }" var="board">
+							<tr>
+								<td>${board.id }</td>
+								<td>													
+									<c:url value="challenge/board/get" var="getUrl">
+										<c:param name="id" value="${board.id }"></c:param>
+									</c:url>
+									
+									<a href="${getUrl }">
+										<c:out value="${board.title }" />
+									</a>
+									
+									<c:if test="${board.hasFile }">
+										<span class="badge rounded-pill bg-light text-dark">
+											<i class="fa-solid fa-file"></i>
+										</span>
+									</c:if>
+									
+									<c:if test="${board.numOfReply > 0 }">
+										<span class="badge rounded-pill bg-light text-dark">
+											<i class="fa-solid fa-comment-dots"></i>
+											${board.numOfReply }
+										</span>
+									</c:if>									
+								</td>
+								<td>${board.writerNickName }</td>
+								<td>${board.prettyInserted }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
-	</nav>
+	</div>
 	
-	<hr />	
-	<h1>게시글 목록</h1>	
-	<hr />
+	<div class="mt-3">
+			<my:pagination></my:pagination>
+	</div>
 	
-	<table class="table table-secondary table-striped">
-		<thead>
-			<tr>
-				<th>id</th>
-				<th>title</th>
-				<th>inserted</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${boardList }" var="board">
+	<!-- 
+	<div class="container">
+		<div class="mt-3">
+		</div>
+
+		<hr />
+		<h1>게시글 목록</h1>
+		<hr />
+		
+		<c:if test="${not empty message }">
+			<div class="alert alert-primary">
+				${message }
+			</div>
+		</c:if>
+
+		<div class="table-responsive">
+		<table class="table table-bordered table-sm">
+			<thead>
 				<tr>
-					<td>${board.id }</td>
-					<td>
-					<c:url value="/challenge/board/${board.id }" var="link" />
-					<a href="${link }">${board.title }</a>
-					<c:if test="${board.numOfReply > 0 }">
-						[${board.numOfReply }]
-					</c:if>
-					</td>
-					<td>${board.inserted }</td>
+					<th><i class="fa-solid fa-hashtag"> Post Order Number</i></th>
+					<th>Post Title</th>
+					<th><i class="fa-solid fa-pen-fancy"> Writer</i></th>
+					<th><i class="fa-regular fa-calendar"> Date of Writing</i></th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>	
-	
+			</thead>
+			<tbody>
+				<c:forEach items="${boardList }" var="board">
+					<tr>
+						<td>${board.id }</td>
+						<td>
+							<c:url value="/challenge/board/${board.id }" var="link" />
+							<a href="${link }">${board.title }</a>
+							<c:if test="${board.numOfReply > 0 }">
+								[${board.numOfReply }]
+							</c:if>
+						</td>
+						<td></td>
+						<td>${board.prettyInserted }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		</div>		
+	</div>
+	 -->
+
 </body>
 </html>

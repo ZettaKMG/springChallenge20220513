@@ -9,7 +9,7 @@ import com.choongang.spr.domain.BoardDto;
 import com.choongang.spr.mapper.PageInfoMapper;
 
 @Service
-public class ChallengePageInfoService {
+public class PageInfoService {
 	@Autowired
 	private PageInfoMapper pageInfoMapper;
 	

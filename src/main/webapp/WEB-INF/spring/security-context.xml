@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<!-- 책 p652 -->
+	<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+	<security:http>
+		<security:csrf disabled="true" />
+		<security:form-login always-use-default-target="true" login-page="challenge/member/login" default-target-url="challenge/board/list" />
+		<security:logout logout-success-url="challenge/board/list" />
+		<security:remember-me/>
+		
+		<!-- access 속성 작성법(책 p673 ~ p674) -->
+		<!-- 게시글 create, update, delete -->
+		<security:intercept-url pattern="challenge/board/write" access="isAuthenticated()" />
+		<security:intercept-url pattern="challenge/board/modify" access="isAuthenticated()" />
+		<security:intercept-url pattern="challenge/board/remove" access="isAuthenticated()" />
+				
+		<!-- 회원정보 read, update, delete -->
+		<security:intercept-url pattern="challenge/member/list" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="challenge/member/initpw" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="challenge/member/get" access="isAuthenticated()" />
+		<security:intercept-url pattern="challenge/member/remove" access="isAuthenticated()" />
+		<security:intercept-url pattern="challenge/member/modify" access="isAuthenticated()" />
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service 
+				data-source-ref="dataSource"
+				users-by-username-query="
+					SELECT id, password, 1
+					FROM Member 
+					WHERE id = ?
+				" 
+				
+				authorities-by-username-query="
+					SELECT memberId, role
+					FROM Auth
+					WHERE memberId = ?
+				"
+				/>			
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>
