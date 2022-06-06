@@ -10,22 +10,22 @@
 
 	<security:http>
 		<security:csrf disabled="true" />
-		<security:form-login always-use-default-target="true" login-page="challenge/member/login" default-target-url="challenge/board/list" />
-		<security:logout logout-success-url="challenge/board/list" />
+		<security:form-login always-use-default-target="true" login-page="/challenge/member/login" default-target-url="/challenge/board/list" />
+		<security:logout logout-success-url="/challenge/board/list" />
 		<security:remember-me/>
 		
 		<!-- access 속성 작성법(책 p673 ~ p674) -->
 		<!-- 게시글 create, update, delete -->
-		<security:intercept-url pattern="challenge/board/write" access="isAuthenticated()" />
-		<security:intercept-url pattern="challenge/board/modify" access="isAuthenticated()" />
-		<security:intercept-url pattern="challenge/board/remove" access="isAuthenticated()" />
+		<security:intercept-url pattern="/challenge/board/write" access="isAuthenticated()" />
+		<security:intercept-url pattern="/challenge/board/modify" access="isAuthenticated()" />
+		<security:intercept-url pattern="/challenge/board/remove" access="isAuthenticated()" />
 				
 		<!-- 회원정보 read, update, delete -->
-		<security:intercept-url pattern="challenge/member/list" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="challenge/member/initpw" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="challenge/member/get" access="isAuthenticated()" />
-		<security:intercept-url pattern="challenge/member/remove" access="isAuthenticated()" />
-		<security:intercept-url pattern="challenge/member/modify" access="isAuthenticated()" />
+		<security:intercept-url pattern="/challenge/member/list" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/challenge/member/initpw" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/challenge/member/get" access="isAuthenticated()" />
+		<security:intercept-url pattern="/challenge/member/remove" access="isAuthenticated()" />
+		<security:intercept-url pattern="/challenge/member/modify" access="isAuthenticated()" />
 	</security:http>
 	
 	<security:authentication-manager>
